@@ -5,7 +5,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.UUID;
 
 import org.apache.commons.codec.binary.Base64;
-public class NoteUtul {
+public class NoteUtil {
 	public static String createId() {
 		//号称能生成具有全球唯一性的id...来用作表的主键
 		UUID uuid = UUID.randomUUID();
@@ -39,7 +39,7 @@ public class NoteUtul {
 //		for (int i = 0; i < 8; i++) {
 //			System.out.println(createId());
 //		}
-		String pwd = NoteUtul.md5("656565464213564");
+		String pwd = NoteUtil.md5("656565464213564");
 		System.out.println("加密后:"+pwd);
 	}
 }

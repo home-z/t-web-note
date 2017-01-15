@@ -41,6 +41,6 @@
 		<!--定义MapperScannerConfigurer
 	生成的Dao对象id为接口名首字母小写 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="org.book.web-notebook"></property>
+		<property name="basePackage" value="org.book.web-notebook.dao"></property>
 	</bean>
 		</beans>

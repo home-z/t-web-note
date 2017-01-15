@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="org.book.web-notebook.dao">
+	<sql id="user_value">
+		cn_user_id,cn_user_name,cn_user_password,cn_user_token,cn_user_nick
+	</sql>
+	
+	<!-- 查询所有用户 -->
+	<select id="findByName" parameterType="String" resultType="org.book.web-notebook.entity.User">
+		select 
+		<include refid="user_value"/> 
+		from cn_user where cn_user_name=#{name}
+	</select>
+	
+	<!-- 新增用户 -->
+	<insert id="addUser">
+		insert into cn_user
+		<include refid="user_value"/> 
+		values (cn_user_id#{id},cn_user_name#{name}, 
+		cn_user_password#{password},cn_user_token#{token},cn_user_nick#{nick})
+	</insert>
+</mapper>

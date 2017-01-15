@@ -2,6 +2,36 @@
 <html>
 <head>
 <link rel="stylesheet" href="styles/login.css"/>
+<script type="text/javascript" src="scripts/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("#login").click(function() {
+			$("#user_text").html("");
+			$("#pwd_text").html("");
+			 
+			var name = $("#count").val().trim();
+			var password = $("#password").val().trim();
+// 			alert(name);
+// 			console.log("控制台信息");
+		boolean mark = true;
+		if (name == "") {
+			mark = false;
+			$("#user_text").html("用户名不能为空");
+		}
+		if (password == "") {
+			mark = false;
+			$("#pwd_text").html("密码不能为空");
+		}
+		
+		//发送Ajax
+		if (mark) {
+			$ajax({
+				
+			});
+		}
+		});
+	});
+</script>
 </head>
 	<body>
 		<div class="global">
@@ -16,11 +46,13 @@
 					<dt>
 						<div class='letter'>
 							用户名:&nbsp;<input type="text" name="" id="count" tabindex='1'/>
+							<span id="user_text"></span>
 						</div>
 					</dt>
 					<dt>
 						<div class='letter'>
 							密&nbsp;&nbsp;&nbsp;码:&nbsp;<input type="password" name="" id="password" tabindex='2'/>
+							<span id="pwd_text"></span>
 						</div>
 					</dt>
 					<dt>
