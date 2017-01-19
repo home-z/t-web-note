@@ -32,7 +32,7 @@
 		
 		<bean id="ssf" 
 		class="org.mybatis.spring.SqlSessionFactoryBean">
-			<!--data source  -->
+			<!--data source  连接池-->
 			<property name="dataSource" ref="dbcp"></property>
 			<!-- 指定sql定义文件 -->
 			<property name="mapperLocations" value="classpath:dbmapping-config/*.xml"></property>
@@ -40,7 +40,11 @@
 		
 		<!--定义MapperScannerConfigurer
 	生成的Dao对象id为接口名首字母小写 -->
-	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="org.book.web-notebook.dao"></property>
+	<bean 
+class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<!-- 指定Mapper接口所在包 -->
+		<!-- value值直接写包名 -->
+		<property name="basePackage" value="note.dao"></property>
+		<!-- 默认注入SqlSessionFactory,可以省略 -->
 	</bean>
-		</beans>
+</beans>

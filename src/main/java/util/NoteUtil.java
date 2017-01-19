@@ -39,7 +39,7 @@ public class NoteUtil {
 //		for (int i = 0; i < 8; i++) {
 //			System.out.println(createId());
 //		}
-		String pwd = NoteUtil.md5("656565464213564");
+		String pwd = NoteUtil.md5("123456");
 		System.out.println("加密后:"+pwd);
 	}
 }

@@ -1,9 +1,8 @@
-package entity;
+package note.entity;
 
 import java.io.Serializable;
 
-@SuppressWarnings("serial")
-public class User implements Serializable {
+public class Cn_User implements Serializable {
 	private String cn_user_id;
 	private String cn_user_name;
 	private String cn_user_password;

@@ -20,5 +20,16 @@
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
 		
+		<!-- hanlderMapping -->
+		<mvc:annotation-driven/>
+		
+		<!-- 扫描controller和service组件 
+		容器会扫描base-package指定的包及其子
+	 	包下面的所有的类，如果该类前面有特定的
+	 	注解(比如@Component),则容器会将其纳入
+	 	进行管理(相当在配置文件当中，有一个bean)。 
+	 	
+	 	-->
+		<context:component-scan base-package="note"/>
 		
 </beans>
