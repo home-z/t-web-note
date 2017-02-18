@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="note.dao.NoteBookDao">
+	<select id="allNoteBook" parameterType="String" resultType="note.entity.Cn_NoteBook">
+		select * from cn_notebook where cn_user_id=#{userId}
+	</select>
+	
+	<select id="fingByNote" parameterType="String" resultType="note.entity.Note">
+		select * from cn_note where cn_note_id=#{noteId}
+	</select>
+</mapper>

@@ -19,9 +19,15 @@
   	</init-param>
   	<load-on-startup>1</load-on-startup>
   </servlet>
-  
   <servlet-mapping>
   	<servlet-name>MVC</servlet-name>
   	<url-pattern>*.do</url-pattern>
   </servlet-mapping>
+  
+  <!-- 配置session超时时间(分钟)：
+  		当用户的空闲(不操作)时间超出该时间时，
+  		服务器将销毁此session。 -->
+  <session-config>
+  	<session-timeout>1</session-timeout>
+  </session-config>
 </web-app>

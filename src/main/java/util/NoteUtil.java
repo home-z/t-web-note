@@ -18,12 +18,12 @@ public class NoteUtil {
 	 * @param msg 明文
 	 * @return 密文
 	 */
-	public static String md5(String msg) {
+	public static String md5(String pwd) {
 		try {
 			//getInstance参数为所请求算法的名称
 			MessageDigest md = MessageDigest.getInstance("MD5");
 			//传入要加密的数据
-			byte[] input = msg.getBytes();
+			byte[] input = pwd.getBytes();
 			//加密数据
 			byte[] output = md.digest(input);
 			//采用Base64将加密内容output转成String字符串

@@ -1,4 +1,4 @@
-package user;
+package user_dao;
 
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -10,7 +10,7 @@ import note.server.UserService;
 import util.NoteResult;
 import util.NoteUtil;
 
-public class testUserDaoAndUserServer {
+public class TestUserDaoAndUserServer {
 	@Test
 	public void testUserDao() {
 		String config = "spring-config/spring-mybatis.xml";

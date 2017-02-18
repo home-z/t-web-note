@@ -4,51 +4,67 @@
 <link rel="stylesheet" href="styles/login.css"/>
 <script type="text/javascript" src="scripts/jquery.min.js"></script>
 <script type="text/javascript" src="scripts/cookie_util.js"></script>
+<script type="text/javascript" src="scripts/login_and_regist.js"></script>
 <script type="text/javascript">
 	$(function() {
-		$("#login").click(function() {
-			$("#user_text").html("");
-			$("#pwd_text").html("");
-			 
-			var name = $("#count").val().trim();
-			var password = $("#password").val().trim();
-// 			alert(name);
-// 			console.log("控制台信息");
-		var mark = true;
-		if (name == "") {
-			mark = false;
-			$("#user_text").html("用户名不能为空");
-		}
-		if (password == "") {
-			mark = false;
-			$("#pwd_text").html("密码不能为空");
-		}
-		
-		//发送Ajax
-		if (mark) {
+		$("#regist_button").click(function() {
+			
+			var rname = $("#regist_username").val().trim();
+			var nikename = $("#nickname").val().trim();
+			var password = $("#regist_password").val().trim();
+			var final_password = $("#final_password").val().trim();
+			//每次点击重新判断前 清空提示内容
+			//层次选择器
+			$("#warning_1 spam").html("");
+			$("#warning_1").hide();
+			$("#warning_2 span").html("");
+			$("#warning_2").hide();
+			$("#warning_3 span").html("");
+			$("#warning_3").hide();
+			
+			var check = true;
+			if (rname == "") {
+				check = false;
+				//写入内容，将覆盖旧内容，并显示该class
+				$("#warning_1 span").html("用户名为空");
+				$("#warning_1").show();
+			} else if (password == "") {
+				check = false;
+				$("#warning_2 span").html("密码不能为空");
+				$("#warning_2").show();
+			} else if (password.length<6) {
+				check = false;
+				$("#warning_2 span").html("长度要大于6");
+				$("#warning_2").show();
+			} else if (final_password == "") {
+				check = false;
+				$("#warning_3 span").html("内容不能为空");
+				$("#warning_3").show();
+			} else if (final_password != password) {
+				check = false;
+				$("#warning_3 span").html("密码不一致");
+				$("#warning_3").show();
+			}
+			if (check) {
 			$.ajax({
-				url:"user/login.do",
+				url:"user/regist.do",
 				type:"post",
-				data:{"name":name,"password":password},
+				data:{"name":rname,"nikename":nikename,"pwd":password},
 				dataType:"json",
 				success:function(result) {
-					if(result.stat == 3) {//
-						//获取返回的用户ID,存入Cookie
-						var userId = result.data;
-						addCookie("userId",userId,2);
+					if (result.stat == 0) {
 						alert(result.message);
-						window.location.href="edit.html";
-					} else if (result.stat == 2) {
-						$("#pwd_text").html(result.message);
-					} else if(result.stat == 1) {
-						$("#user_text").html(result.message);
+						window.location.href="log_in.html";
+					}
+					if (result.stat == 1) {
+						alert(result.message);
 					}
 				},
 				error:function() {
-					alert("登录异常");
+					alert("注册异常！");
 				}
 			});
-		  }
+			}
 		});
 	});
 </script>

@@ -6,16 +6,16 @@
 		cn_user_id,cn_user_name,cn_user_password,cn_user_token,cn_user_nick
 	</sql>
 	
-	<!-- 查询所有用户 -->
+	<!-- 查询指定用户 用户名已存在则停止创建此用户 -->
 	<select id="findByName" parameterType="String" resultType="note.entity.Cn_User">
 		select * from cn_user where cn_user_name=#{name}
 	</select>
 	
 	<!-- 新增用户 -->
-	<insert id="addUser">
+	<insert id="addUser" parameterType="note.entity.Cn_User">
 		insert into cn_user
-		<include refid="user_value"/> 
-		values (cn_user_id#{id},cn_user_name#{name}, 
-		cn_user_password#{password},cn_user_token#{token},cn_user_nick#{nick})
+		(cn_user_id,cn_user_name,cn_user_password,cn_user_nick)
+		values (#{cn_user_id},#{cn_user_name}, 
+		#{cn_user_password},#{cn_user_nick})
 	</insert>
 </mapper>
